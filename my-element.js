@@ -1,26 +1,35 @@
-const template = document.createElement("div");
-template.innerHTML = `
-    <style>
-        p{
-            color:blue;
-        }
-        .texto{
-            color:red;
-        }
-    </style>
-    <p class="texto">Hola mundo 2!!</p>
-    <p>Texto Ejemplo</p>
-`;
-
 class myElementm extends HTMLElement {
   constructor() {
     super();
-    this.p = document.createElement("p");
+  }
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+        <section>
+          <h2>Hola mundo cruel</h2>
+          <div>
+            <p>Soy mas texto ejemplo</p>
+          </div>
+        </section>
+        ${this.getStyle()}
+      `;
+
+    return template;
+  }
+
+  getStyle() {
+    return `
+    <style>
+      h2{
+        color:red;
+      }
+    </style>`;
+  }
+  render() {
+    this.appendChild(this.getTemplate().content.cloneNode(true));
   }
   connectedCallback() {
-    this.p.textContent = "Hola Mundo!!";
-    this.appendChild(this.p);
-    this.appendChild(template);
+    this.render();
   }
 }
 
