@@ -6,7 +6,15 @@
     <title>Custom Elements</title>
   </head>
   <body>
-    <my-element> Soy un texto </my-element>
+    <my-element>
+      <span slot="title"> Soy el titulo</span>
+      <span slot="parrafo">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam
+        accusantium facilis, doloremque quae consectetur facere laudantium
+        provident consequatur voluptatibus dicta illum quas corrupti
+        reprehenderit rerum totam blanditiis ea in debitis?</span
+      >
+    </my-element>
     <script type="module" src="./my-element.js"></script>
   </body>
 </html>
