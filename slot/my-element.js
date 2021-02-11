@@ -6,6 +6,25 @@ class myElementm extends HTMLElement {
     this.parrafo = this.getAttribute("parrafo");
     this.img = this.getAttribute("img");
   }
+
+  attributeChangeCallback(attr, oldVal, newVal) {
+    if (attr === "title") {
+      this.title = newVal;
+    }
+
+    if (attr === "parrafo") {
+      this.parrafo = newVal;
+    }
+
+    if (attr === "img") {
+      this.img = newVal;
+    }
+  }
+
+  static get observedAttributes() {
+    return ["title", "parrafo", "img"];
+  }
+
   getTemplate() {
     const template = document.createElement("template");
     template.innerHTML = `
